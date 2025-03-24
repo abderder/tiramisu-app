@@ -15,7 +15,7 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     const commandes = {{ commandes | tojson }};
-    const map = L.map('map').setView([48.8566, 2.3522], 11); // Paris par défaut
+    const map = L.map('map').setView([48.8566, 2.3522], 12); // Paris par défaut
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
@@ -30,7 +30,8 @@
             L.marker([lat, lon]).addTo(map)
               .bindPopup(`<b>${c.nom}</b><br>${c.adresse}`);
           }
-        });
+        })
+        .catch(error => console.error('Erreur de géocodage :', error));
     });
   </script>
 </body>
