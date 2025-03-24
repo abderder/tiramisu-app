@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Commandes</title>
+</head>
+<body>
+    <h1>Tableau de bord des commandes</h1>
+    <p>Trier par :
+        <a href="/dashboard?tri=date">Date</a> |
+        <a href="/dashboard?tri=nom">Nom</a> |
+        <a href="/dashboard?tri=adresse">Adresse</a>
+    </p>
+    <table border="1">
+        <tr>
+            <th>Nom</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+            <th>Date</th>
+        </tr>
+        {% for commande in commandes %}
+        <tr>
+            <td>{{ commande.nom }}</td>
+            <td>{{ commande.telephone }}</td>
+            <td>{{ commande.adresse }}</td>
+            <td>{{ commande.date_commande.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="/map">Voir la carte des clients</a></p>
+</body>
+</html>
